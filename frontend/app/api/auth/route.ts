@@ -5,12 +5,13 @@ const { Alchemy, Network, AssetTransfersCategory } = require("alchemy-sdk");
 
 const settings = {
   apiKey: process.env.ALCHEMY_API_KEY,
-  network: Network.ETH_SEPOLIA, // Replace with your desired network.
+  network: Network.ETH_GOERLI, // Replace with your desired network.
 };
 
 const alchemy = new Alchemy(settings);
 
 export async function POST(request: Request) {
+  console.log(process.env.ALCHEMY_API_KEY);
   const requestMethod = request.method;
   const body = await request.json();
 
@@ -28,7 +29,8 @@ export async function POST(request: Request) {
       // if the user has paid the merchant 1 $USDC on Goerli, reveal the secret!
       if (totalTokensSent >= 1) {
         return NextResponse.json({
-          message: "The secret party is at 555 Krabby Patty St. at 1pm PST! 🤫",
+          message:
+            "The secret party is on July 28th, 2023 at 555 Krabby Patty St. at 9pm PST! 🤫",
         });
       } else {
         // if the user hasn't paid yet, prompt them to pay!
