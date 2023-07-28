@@ -5,7 +5,7 @@ const { Alchemy, Network, AssetTransfersCategory } = require("alchemy-sdk");
 
 const settings = {
   apiKey: process.env.ALCHEMY_API_KEY,
-  network: Network.ETH_GOERLI, // Replace with your desired network.
+  network: Network.ETH_SEPOLIA, // Replace with your desired network.
 };
 
 const alchemy = new Alchemy(settings);
@@ -26,7 +26,7 @@ export async function POST(request: Request) {
 
   switch (requestMethod) {
     case "POST":
-      // if the user has paid the merchant 1 $USDC on Goerli, reveal the secret!
+      // if the user has paid the merchant 1 $ZEENUS on Goerli, reveal the secret!
       if (totalTokensSent >= 1) {
         return NextResponse.json({
           message:
@@ -36,7 +36,7 @@ export async function POST(request: Request) {
         // if the user hasn't paid yet, prompt them to pay!
         return NextResponse.json({
           message:
-            "You haven't paid 1 $USDC to 0x2c8645BFE28BEEb6E19843eE9573b7539DD5B530! ❌",
+            "You haven't paid 1 $ZEENUS to 0x08d300Df68b33bAb33dd0664AbD9769fcC652D8E! ❌",
         });
       }
   }
@@ -49,7 +49,7 @@ async function getAmountTokensSent(userAddress) {
     toBlock: "latest",
     fromAddress: userAddress,
     // merchant address! replace with one you own!
-    toAddress: "0x2c8645BFE28BEEb6E19843eE9573b7539DD5B530",
+    toAddress: "0x08d300Df68b33bAb33dd0664AbD9769fcC652D8E",
     excludeZeroValue: true,
     category: [AssetTransfersCategory.ERC20],
   });
