@@ -23,13 +23,13 @@ export default function Home() {
   });
 
   const [secretMessage, setSecretMessage] = useState(
-    "You have to pay $1 USDC to see the secret! 👀"
+    "You have to pay $1 ZEENUS to see the secret! 👀"
   );
 
   useEffect(() => {
     setTimeout(() => {
       setHasVerified(false);
-      setSecretMessage("You have to pay $1 USDC to see the secret! 👀");
+      setSecretMessage("You have to pay $1 ZEENUS to see the secret! 👀");
     }, 500);
   }, [address]);
 
